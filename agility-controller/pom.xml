@@ -47,7 +47,12 @@ xmlns="http://maven.apache.org/POM/4.0.0"
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-devtools</artifactId>
         </dependency>
-        
+        		     <!--springboot程序测试依赖，如果是自动创建项目默认添加-->
+     <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-test</artifactId>
+         <scope>test</scope>
+     </dependency>
         <dependency>
 	  		<artifactId>agility-service</artifactId>
 	  		<version>0.0.1-SNAPSHOT</version>
