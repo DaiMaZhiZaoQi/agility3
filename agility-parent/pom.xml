@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.sx.agility</groupId>
+    <artifactId>agility</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>agility-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>agility-parent</name>
+  <description>parent</description>
+  
+  <!-- 版本统一管理  -->
+  <properties>
+   <servlet.version>3.1.0</servlet.version>
+  	<junit-version>4.12</junit-version>
+  	<spring-version>2.2.2.RELEASE</spring-version>
+  </properties>
+  
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		 <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-devtools</artifactId>
+        	<version>${spring-version}</version>
+        </dependency>
+         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${spring-version}</version>
+        </dependency>
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+  	     <!--servlet-->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet.version}</version>
+            </dependency>
+  	
+  		<dependency>
+  			<!--test-->
+	        <groupId>junit</groupId>
+	        <artifactId>junit</artifactId>
+	        <scope>test</scope>
+	        <version>${junit-version}</version>
+  		</dependency>
+  		    
+  	</dependencies>
+  </dependencyManagement>
+  
+    <!--阿里maven仓库-->
+    <repositories>
+        <repository>
+            <id>mvnrepository</id>
+            <name>mvnrepository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+ 
+  <!--   <modules>
+    	<module>agility-model</module>
+    	<module>agility-dao</module>
+    	<module>agility-service</module>
+	    <module>agility-controller</module>
+  </modules> -->
+</project>

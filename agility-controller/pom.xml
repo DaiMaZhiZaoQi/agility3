@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" 
+xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.sx.agility</groupId>
+    <artifactId>agility-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>agility-controller</artifactId>
+  <name>agility-controller</name>
+  <url>http://maven.apache.org</url>
+  <!-- 打包到tomcat  -->
+  <packaging>war</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  
+  <dependencies>
+<!--最终打成war包，排除内置的tomcat-->
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<!--声明spring boot内嵌tomcat的作用范围  在运行时不起作用,只在compile test生命周期类有效-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+		 <dependency>
+             <groupId>javax.servlet</groupId>
+              <artifactId>javax.servlet-api</artifactId>
+         </dependency>
+         
+        <dependency>
+  			<!--test-->
+	        <groupId>junit</groupId>
+	        <artifactId>junit</artifactId>
+  		</dependency>
+  		
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+        
+        <dependency>
+	  		<artifactId>agility-service</artifactId>
+	  		<version>0.0.1-SNAPSHOT</version>
+	  		<groupId>com.sx.agility</groupId>
+  		</dependency>  
+  </dependencies>
+  
+   <build>
+   		<finalName>agility</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                	<execution>
+                		<goals>
+                			<goal>repackage</goal>
+                		</goals>
+                	</execution>
+                </executions>
+              <!--    <configuration>
+			        <mainClass>org.agility.controller</mainClass>
+			    </configuration> -->
+            </plugin>
+            
+            <!-- maven 打war包 无web.xml -->
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
+</project>
