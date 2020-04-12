@@ -1,4 +1,4 @@
-package com.sx.common;
+package com.agility.common;
 
 public class HelloMaven {
 	

@@ -1,6 +1,6 @@
-package com.sx.dao;
+package com.agility.dao;
 
-import com.sx.model.entity.MUserEntity;
+import com.agility.model.entity.MUserEntity;
 
 public class DaoUserMapper {
 		

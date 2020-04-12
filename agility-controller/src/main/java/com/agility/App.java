@@ -1,4 +1,4 @@
-package org.agility.controller;
+package com.agility;
 
 
 import java.util.List;
@@ -8,13 +8,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.agility.model.entity.UserEntity;
 import com.sx.agility.service.ServiceUserImp;
 import com.sx.agility.service.UserService;
-import com.sx.model.entity.UserEntity;
 
 import ch.qos.logback.classic.Logger;
 
@@ -24,8 +25,9 @@ import ch.qos.logback.classic.Logger;
  * springBoot 入口类放置的位置很重要
  */
 @SpringBootApplication
-@RestController
-public class App  extends SpringBootServletInitializer {
+@ComponentScan("com.agility.*")
+//@RestController
+public class App /* extends SpringBootServletInitializer */ {
 	
 	
 	
@@ -41,11 +43,11 @@ public class App  extends SpringBootServletInitializer {
 	/**
 	 * 在tomcat中执行调用该方法启动SpringBoot 
 	 */
-	@Override 
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) { 
-		  return builder.sources(App.class); 
-	}
-	 
+//	@Override 
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) { 
+//		  return builder.sources(App.class); 
+//	}
+//	 
     
  
     

@@ -1,7 +1,7 @@
 package com.sx.agility.service;
 
-import com.sx.common.HelloMaven;
-import com.sx.model.entity.MUserEntity;
+import com.agility.common.HelloMaven;
+import com.agility.model.entity.MUserEntity;
 
 public class ServiceUserImp {
 	public static MUserEntity serviceTest() {

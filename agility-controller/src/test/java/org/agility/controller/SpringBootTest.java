@@ -9,8 +9,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.agility.App;
+import com.agility.model.entity.UserEntity;
 import com.sx.agility.service.UserService;
-import com.sx.model.entity.UserEntity;
 
 @RunWith(SpringRunner.class)
 @org.springframework.boot.test.context.SpringBootTest(classes={App.class})// 指定启动类

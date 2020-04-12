@@ -2,6 +2,8 @@ package com.sx.common;
 
 import org.junit.Test;
 
+import com.agility.common.HelloMaven;
+
 import junit.framework.Assert;
 
 public class HelloTest {

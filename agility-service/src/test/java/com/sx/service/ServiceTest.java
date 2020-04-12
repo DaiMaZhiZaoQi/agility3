@@ -2,7 +2,7 @@ package com.sx.service;
 
 import org.junit.Test;
 
-import com.sx.model.entity.MUserEntity;
+import com.agility.model.entity.MUserEntity;
 
 public class ServiceTest {
 

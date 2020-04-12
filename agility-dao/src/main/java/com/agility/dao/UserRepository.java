@@ -1,8 +1,8 @@
-package com.sx.dao;
+package com.agility.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.sx.model.entity.UserEntity;
+import com.agility.model.entity.UserEntity;
 
 /**
  * jpa专用操作

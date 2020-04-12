@@ -1,4 +1,4 @@
-package com.sx.model.entity;
+package com.agility.model.entity;
 
 /**
  * 用户实体
