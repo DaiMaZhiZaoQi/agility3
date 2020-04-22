@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.agility.dao.DaoUserMapper">
+
+	
+
+	<insert id="inserts" parameterType="UserEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name!=null and name.length()>0">
+				name,
+			</if>
+			<if test="password!=null and password.length()>0">
+				password,
+			</if>
+			<if test="userAddress!=null and userAddress>0">
+				user_address,
+			</if>
+			<if test="departmentId!=null">
+				department_id,
+			</if>
+			<if test="gmtCreate!=null">
+				gmt_create
+			</if>
+		</trim>
+		
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="name!=null and name.length()>0">
+				#{name},
+			</if>
+			<if test="password!=null and password.length()>0">
+				#{password},
+			</if>
+			<if test="userAddress!=null and userAddress.length()>0">
+				#{userAddress},
+			</if>
+			<if test="departmentId!=null">
+				#{departmentId},
+			</if>
+			<if test="gmtCreate!=null">
+				#{gmt_create}
+			</if>
+		</trim>
+	</insert>
+
+</mapper>

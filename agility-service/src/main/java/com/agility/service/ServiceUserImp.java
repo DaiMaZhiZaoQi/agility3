@@ -1,4 +1,4 @@
-package com.sx.agility.service;
+package com.agility.service;
 
 import com.agility.common.HelloMaven;
 import com.agility.model.entity.MUserEntity;

@@ -11,27 +11,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.agility.dao.DaoRoleMapper;
+import com.agility.dao.DaoUserMapper;
+import com.agility.model.entity.MUserEntity;
 import com.agility.model.entity.UserEntity;
-import com.alibaba.druid.support.json.JSONUtils;
+import com.agility.service.ServiceUserImp;
+import com.agility.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.JsonpCharacterEscapes;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sx.agility.service.ServiceUserImp;
-import com.sx.agility.service.UserService;
 
 //@Controller
 @RestController
 @RequestMapping("/user/")
-public class UserController {
+public class UserController extends BaseController{
 
-	@Autowired(required = true)
+	@Autowired
+	DaoUserMapper mUserMapper;
+	@Autowired
+	DaoRoleMapper mRoleMapper;
+	@Autowired
 	UserService mUserService;
 	
 	   @GetMapping("test")
 //	   @ResponseBody
 	    public String test(@RequestParam(value = "name",defaultValue = "zhang")String name) {
 	    	ServiceUserImp.serviceTest();
-	    	List<UserEntity> findAll = mUserService.findAll();
+	    	List<UserEntity> findAll = mUserMapper.selectList(null);
 	    	System.out.println("test-->"+findAll.get(0).mToString()+"===>"+String.format("hello %s!", name));
 //	    	return String.format("hello %s!", name);
 	    	ObjectMapper objectMapper = new ObjectMapper();
@@ -45,4 +50,26 @@ public class UserController {
 			}
 	    	return "fail";
 	    }
+	   
+	   
+	   @ResponseBody
+	   @RequestMapping("role")
+	   public String selectRole(@RequestParam(value="id")String id) {
+			ObjectMapper objectMapper = new ObjectMapper();
+	    	try {
+//	    		String json=objectMapper.writeValueAsString( mRoleMapper.selectById(id));
+	    		String json=objectMapper.writeValueAsString( mUserService.getById(id));
+	    		
+				return json;
+			} catch (JsonProcessingException e) {   
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	return "fail";
+	
+	   }
+	   
+	   
+	   
+	   
 }

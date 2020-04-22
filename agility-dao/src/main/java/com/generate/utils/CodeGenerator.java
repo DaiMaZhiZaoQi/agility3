@@ -17,7 +17,7 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 
 //演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中
 public class CodeGenerator {
@@ -58,7 +58,8 @@ public class CodeGenerator {
      DataSourceConfig dsc = new DataSourceConfig();
      dsc.setUrl("jdbc:mysql://localhost:3306/testsp?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
      // dsc.setSchemaName("public");
-     dsc.setDriverName("com.mysql.jdbc.Driver");
+//     dsc.setDriverName("com.mysql.jdbc.Driver");			//  是 mysql-connector-java5中的
+     dsc.setDriverName("com.mysql.cj.jdbc.Driver");			//	是mySql-connector-java6中的
      dsc.setUsername("root");
      dsc.setPassword("uAiqwVwjJ8-i");
      mpg.setDataSource(dsc);
@@ -66,7 +67,7 @@ public class CodeGenerator {
      // 包配置
      PackageConfig pc = new PackageConfig();
      pc.setModuleName(scanner("模块名"));
-     pc.setParent("com.baomidou.ant");
+     pc.setParent("com.agility.dao");
      mpg.setPackageInfo(pc);
 
      // 自定义配置
@@ -77,8 +78,8 @@ public class CodeGenerator {
          }
      };
 
-     // 如果模板引擎是 freemarker
-     String templatePath = "/templates/mapper.xml.ftl";
+     // 如果模板引擎是 btl
+     String templatePath = "templates/mapper.xml.vm";
      // 如果模板引擎是 velocity
      // String templatePath = "/templates/mapper.xml.vm";
 
@@ -119,7 +120,8 @@ public class CodeGenerator {
      // templateConfig.setEntity("templates/entity2.java");
      // templateConfig.setService();
      // templateConfig.setController();
-
+     
+//     templateConfig.setXml("/src/main/resources/templates/mapper.java.vm");
      templateConfig.setXml(null);
      mpg.setTemplate(templateConfig);
 
@@ -127,18 +129,20 @@ public class CodeGenerator {
      StrategyConfig strategy = new StrategyConfig();
      strategy.setNaming(NamingStrategy.underline_to_camel);
      strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-     strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
+     strategy.setSuperEntityClass("MBaseEntity");
      strategy.setEntityLombokModel(true);
      strategy.setRestControllerStyle(true);
      // 公共父类
-     strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
+//     strategy.setSuperControllerClass("BaseController");
      // 写于父类中的公共字段
      strategy.setSuperEntityColumns("id");
      strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
      strategy.setControllerMappingHyphenStyle(true);
      strategy.setTablePrefix(pc.getModuleName() + "_");
      mpg.setStrategy(strategy);
-     mpg.setTemplateEngine(new FreemarkerTemplateEngine());
+//     mpg.setTemplateEngine(new FreemarkerTemplateEngine());
+//     mpg.setTemplateEngine(new BeetlTemplateEngine());
+     mpg.setTemplateEngine(new VelocityTemplateEngine());
      mpg.execute();
  }
 
