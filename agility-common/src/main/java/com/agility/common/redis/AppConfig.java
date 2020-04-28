@@ -1,4 +1,4 @@
-package com.agility.config;
+package com.agility.common.redis;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,10 +8,10 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 @Configuration
 public class AppConfig {
 	
-	  @Bean
-	  public LettuceConnectionFactory redisConnectionFactory() {
-
-	    return new LettuceConnectionFactory(new RedisStandaloneConfiguration("server", 6379));
-	  }
+//	  @Bean
+//	  public LettuceConnectionFactory redisConnectionFactory() {
+//
+//	    return new LettuceConnectionFactory(new RedisStandaloneConfiguration("server", 6379));
+//	  }
 
 }

@@ -24,4 +24,6 @@ public class SpringBootTest {
 		userEntity.setName("李四");
 		System.out.println(	mUserService.saveOrUpdate(userEntity));
 	}
+	
+	
 }

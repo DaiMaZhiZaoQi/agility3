@@ -2,7 +2,13 @@ package com.agility.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.http.codec.cbor.Jackson2CborDecoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.agility.common.ResponseCode;
+import com.agility.common.Result;
+import com.agility.common.redis.RedisUtils;
 import com.agility.dao.DaoRoleMapper;
 import com.agility.dao.DaoUserMapper;
 import com.agility.model.entity.MUserEntity;
@@ -69,7 +78,55 @@ public class UserController extends BaseController{
 	
 	   }
 	   
+	   @ResponseBody
+	   @RequestMapping("testRedis")
+	   public Result testRedis(@RequestParam(value = "name")String name) {
+		   RedisUtils.set("name", name);
+		   String rName=(String) RedisUtils.get("name");
+		   System.out.println("rName--->"+rName);
+		   return Result.success();
+	   }
 	   
+	   /**
+	    * Nginx，静态资源
+	    * @return
+	    */
+	   public String website() {
+		   return "";
+	   }
 	   
+	   /**
+	    * 为了提高web引用可用性，以及性能
+	    * redis集群,session集群,多数据源，分库分表，读写分离
+	    * @param name
+	    * @param password
+	    * @return
+	    */
+	   @GetMapping("login")
+	   public Result login(@RequestParam(value="name",defaultValue = "zhangsan")String name,
+			   			   @RequestParam(value="password",defaultValue = "1111")String password,HttpServletRequest request) {
+//		   mUserService.getById(1);
+//		   Cookie[] cookie=request.getCookies();
+//		   for(Cookie cook:cookie) {
+//			   cook.getName();
+//		   }
+//		   HttpSession session=request.getSession(false);
+//		   session.
+//		   session.getValue(name)
+		   return Result.success();
+		   
+	   }
+	    @GetMapping("/hello")
+	    public String hello() {
+	        return "hello";
+	    }
+	   /**
+	    * SpringSecurity 拦截控制
+	    * @param id
+	    * @return
+	    */
+	   public Result selectUser(@RequestParam(value="id")Long id) {
+		   return Result.success();
+	   }
 	   
 }
