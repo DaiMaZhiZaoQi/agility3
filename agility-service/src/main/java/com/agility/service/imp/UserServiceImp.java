@@ -20,11 +20,10 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Service
-public  class UserServiceImp implements UserService{
 
+public  class UserServiceImp extends UserService{
 	@Autowired
 	DaoUserMapper mUserMapper;
-	
 	@Transactional
 	@Override
 	public boolean saveOrUpdate(UserEntity entity) {
@@ -33,6 +32,7 @@ public  class UserServiceImp implements UserService{
 		 return result;
 //		return false;
 	}
+
 	@Override
 	public UserEntity getById(Serializable id) {
 		// TODO Auto-generated method stub
@@ -74,11 +74,5 @@ public  class UserServiceImp implements UserService{
 		return null;
 	}
 	
-	
-	
-	
-	
-	
-
 
 }
