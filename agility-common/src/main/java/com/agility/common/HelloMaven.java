@@ -7,6 +7,7 @@ public class HelloMaven {
 		 * @return
 		 */
 		public String testMaven(String name) {
+			System.out.println("name"+name);
 			return name;
 		}
 }

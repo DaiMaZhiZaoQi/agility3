@@ -1,38 +1,38 @@
 package com.agility.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-import lombok.Data;
-import lombok.ToString;
+import java.util.Date;
 
-@Data		// lombok
-@ToString
-@Entity		//  jpa
-@Table(name = "user")
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+
+//@Data		// lombok
+//@ToString
+//@Entity		//  jpa
+//@TableName(name = "user")
+@TableName("user")
 public class UserEntity extends MBaseEntity{
 
-	@Id
-	@Column(name = "user_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Id
+//	@Column(name = "user_id")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @TableId(value = "user_id", type = IdType.AUTO)
 	private Integer id;
 	
-	@Column
 	private String name;
 	
-	@Column
 	private String password;
 	
 
 
 	
-	@Column(name = "user_address")
 	private String userAddress;
 
+	private Integer departmentId;
+	
+	private Date gmtCreate;
 
 
 
@@ -87,6 +87,34 @@ public class UserEntity extends MBaseEntity{
 
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
+	}
+
+
+
+
+	public Integer getDepartmentId() {
+		return departmentId;
+	}
+
+
+
+
+	public void setDepartmentId(Integer departmentId) {
+		this.departmentId = departmentId;
+	}
+
+
+
+
+	public Date getGmtCreate() {
+		return gmtCreate;
+	}
+
+
+
+
+	public void setGmtCreate(Date gmtCreate) {
+		this.gmtCreate = gmtCreate;
 	}
 	
 	

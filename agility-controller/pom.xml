@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" 
-xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--    -->
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.sx.agility</groupId>
@@ -19,11 +19,10 @@ xmlns="http://maven.apache.org/POM/4.0.0"
   
   
   <dependencies>
-<!--最终打成war包，排除内置的tomcat-->
-  		<dependency>
+  <!-- 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+		</dependency> -->
 		
 		<!--声明spring boot内嵌tomcat的作用范围  在运行时不起作用,只在compile test生命周期类有效-->
         <dependency>
@@ -32,10 +31,10 @@ xmlns="http://maven.apache.org/POM/4.0.0"
             <scope>provided</scope>
         </dependency>
         
-		 <dependency>
+		<!--  <dependency>
              <groupId>javax.servlet</groupId>
               <artifactId>javax.servlet-api</artifactId>
-         </dependency>
+         </dependency> -->
          
         <dependency>
   			<!--test-->
@@ -43,10 +42,10 @@ xmlns="http://maven.apache.org/POM/4.0.0"
 	        <artifactId>junit</artifactId>
   		</dependency>
   		
-        <dependency>
+     <!--    <dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-devtools</artifactId>
-        </dependency>
+        </dependency> -->
         		     <!--springboot程序测试依赖，如果是自动创建项目默认添加-->
      <dependency>
          <groupId>org.springframework.boot</groupId>
