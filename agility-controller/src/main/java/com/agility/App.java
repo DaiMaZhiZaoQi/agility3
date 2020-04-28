@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.agility.model.entity.UserEntity;
-import com.sx.agility.service.ServiceUserImp;
-import com.sx.agility.service.UserService;
+import com.agility.service.ServiceUserImp;
+import com.agility.service.UserService;
 
 import ch.qos.logback.classic.Logger;
 
@@ -25,7 +25,7 @@ import ch.qos.logback.classic.Logger;
  * springBoot 入口类放置的位置很重要
  */
 @SpringBootApplication
-@ComponentScan("com.agility.*")
+@ComponentScan("com.agility.*")	// TODO 随着项目的增长，包扫描应该有范围限制
 //@RestController
 public class App /* extends SpringBootServletInitializer */ {
 	
