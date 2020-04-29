@@ -20,11 +20,10 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Service
-public  class UserServiceImp extends UserService{
 
+public  class UserServiceImp extends UserService{
 	@Autowired
 	DaoUserMapper mUserMapper;
-	
 	@Transactional
 	@Override
 	public boolean saveOrUpdate(UserEntity entity) {
@@ -33,17 +32,47 @@ public  class UserServiceImp extends UserService{
 		 return result;
 //		return false;
 	}
-	
+
 	@Override
 	public UserEntity getById(Serializable id) {
 		// TODO Auto-generated method stub
 		return mUserMapper.selectById(id);
 	}
+	@Override
+	public boolean saveBatch(Collection<UserEntity> entityList, int batchSize) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean saveOrUpdateBatch(Collection<UserEntity> entityList, int batchSize) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean updateBatchById(Collection<UserEntity> entityList, int batchSize) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public UserEntity getOne(Wrapper<UserEntity> queryWrapper, boolean throwEx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Map<String, Object> getMap(Wrapper<UserEntity> queryWrapper) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public <V> V getObj(Wrapper<UserEntity> queryWrapper, Function<? super Object, V> mapper) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public BaseMapper<UserEntity> getBaseMapper() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	
-	
-	
-	
-
 
 }
