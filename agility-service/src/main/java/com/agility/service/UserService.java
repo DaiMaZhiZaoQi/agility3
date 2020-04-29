@@ -1,5 +1,6 @@
 package com.agility.service;
 
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import com.agility.model.entity.UserEntity;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+
 
 public abstract class UserService implements IService<UserEntity>{
 
