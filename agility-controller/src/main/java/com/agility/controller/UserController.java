@@ -2,27 +2,22 @@ package com.agility.controller;
 
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.http.codec.cbor.Jackson2CborDecoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.agility.common.ResponseCode;
 import com.agility.common.Result;
+import com.agility.common.aspect.DoneTime;
 import com.agility.common.redis.RedisUtils;
 import com.agility.dao.DaoRoleMapper;
 import com.agility.dao.DaoUserMapper;
-import com.agility.model.entity.MUserEntity;
 import com.agility.model.entity.UserEntity;
 import com.agility.service.ServiceUserImp;
 import com.agility.service.UserService;
@@ -34,6 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RequestMapping("/user/")
 public class UserController extends BaseController{
 
+	private Logger log=LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	DaoUserMapper mUserMapper;
 	@Autowired
@@ -116,9 +112,19 @@ public class UserController extends BaseController{
 		   return Result.success();
 		   
 	   }
-	    @GetMapping("/hello")
-	    public String hello() {
-	        return "hello";
+	   @DoneTime(param = "hello")
+	    @GetMapping("hello")
+	    public String hello() throws Exception {
+		   try {
+			log.info("hello--thread"+Thread.currentThread().getName());
+			Thread.currentThread().sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		   log.info("hello--thread"+Thread.currentThread().getName());
+		   throw new Exception("测试抛异常");
+//	        return "hello";
 	    }
 	   /**
 	    * SpringSecurity 拦截控制

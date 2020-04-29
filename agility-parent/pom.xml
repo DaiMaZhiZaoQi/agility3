@@ -34,6 +34,29 @@
 			<artifactId>spring-boot-starter</artifactId>
 			<version>${spring-version}</version>
 		</dependency>
+		
+		<!-- AOP支持  -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>${spring-version}</version>
+        </dependency>
+        
+		<!-- aspectj运行环境 runtime-->
+		<!-- <dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${spring-version}</version>
+		</dependency> -->
+		<!--aspectj织入包  -->
+		<!-- <dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${spring-version}</version>
+		</dependency> -->
+		
+		
+		<!-- spring-boot-devtools当对项目路径下的文件进行修改，保存，会触发重启  -->
 		 <dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-devtools</artifactId>
@@ -158,6 +181,8 @@
 	    <artifactId>spring-data-redis</artifactId>
 	  <version>${spring-version}</version>
   	</dependency>
+  	
+  	<!-- <dependency></dependency> -->
   	
 	<!--   h2数据是轻量级基于内存的数据库
 	     <dependency>
