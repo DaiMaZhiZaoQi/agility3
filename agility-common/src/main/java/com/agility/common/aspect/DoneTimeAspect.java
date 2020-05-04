@@ -16,7 +16,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DoneTimeAspect {
 
-	
+	/**
+	 * 环绕增强,参数必须有ProceedingJoinPoint,必须返回joinPoint.proceed()
+	 * @param joinPoint
+	 * @param doneTime
+	 * @return
+	 * @throws Throwable
+	 */
 	@Around("@annotation(doneTime)")
 	public Object around(ProceedingJoinPoint joinPoint,DoneTime doneTime) throws Throwable {
 		String param=doneTime.param();

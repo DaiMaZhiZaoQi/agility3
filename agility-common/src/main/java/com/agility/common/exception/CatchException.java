@@ -35,7 +35,8 @@ public class CatchException implements HandlerExceptionResolver{
 		Enumeration<String> headerNames = request.getHeaderNames();
 		while (headerNames.hasMoreElements()) {
 			String string = (String) headerNames.nextElement();
-			log.info("resolveException---"+string);
+			String headerValue = request.getHeader(string);
+			log.info("resolveException---name={},value={}",string,headerValue);
 		}
 //		ModelAndView modelAndView = new ModelAndView();
 	
@@ -49,8 +50,10 @@ public class CatchException implements HandlerExceptionResolver{
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		//  modelAndView设置返回json,默认返回视图
 		ModelAndView modelAndView = new ModelAndView(new MappingJackson2JsonView());
-		modelAndView.addObject("result",ResponseCode.err.getCode());
+//		modelAndView.addObject("result",ResponseCode.err.getCode());
+		modelAndView.addObject(Result.error());
 		return modelAndView;
 	}
 

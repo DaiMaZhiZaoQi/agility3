@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * SpringSecurity 权限配置
+ * SpringSecurity 权限配置, 权限管理基于过滤器实现的
  * @author williambai
  *
  */
@@ -43,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		  auth.inMemoryAuthentication().withUser("zhangsan").
 		  password("$2a$10$TMnSvwGXfeE4Lpgny5VUYuZPcDhHMcNfxZ91f3k6TfUIJIk.QvKN.").roles("user");
-		
+		  
 	}
 
 	@Override
@@ -65,6 +66,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             public void onAuthenticationSuccess(HttpServletRequest req, HttpServletResponse resp, Authentication authentication) throws IOException, ServletException {
                 resp.setContentType("application/json;charset=utf-8");
                 PrintWriter out = resp.getWriter();
+                HttpSession session = req.getSession();
+//                req.getServletContext().getRealPath(path)
+                session.getValue("");
+                session.getAttribute("");
                 Result respBean = Result.success();
                 out.write(new ObjectMapper().writeValueAsString(respBean));
                 out.flush();

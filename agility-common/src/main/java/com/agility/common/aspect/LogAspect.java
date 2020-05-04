@@ -73,8 +73,10 @@ public class LogAspect {
 	 */
 	@Around("logAspect()")
 	public Object around(ProceedingJoinPoint proceedjoinPoint) throws Throwable{
-		log.info("--around--");
-			return proceedjoinPoint.proceed();
+		log.info("--around1--");
+			 Object obj=proceedjoinPoint.proceed();
+		log.info("--around2--");
+		return obj;
 	}
 //	
 	

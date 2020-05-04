@@ -114,17 +114,17 @@ public class UserController extends BaseController{
 	   }
 	   @DoneTime(param = "hello")
 	    @GetMapping("hello")
-	    public String hello() throws Exception {
+	    public String hello(@RequestParam(value="name",defaultValue = "zhangsan") String name) throws Exception {
 		   try {
 			log.info("hello--thread"+Thread.currentThread().getName());
 			Thread.currentThread().sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace();  
 		}
-		   log.info("hello--thread"+Thread.currentThread().getName());
-		   throw new Exception("测试抛异常");
-//	        return "hello";
+		   log.info("hello--thread"+Thread.currentThread().getName()+"-param-"+name);
+//		   throw new Exception("测试抛异常");
+	        return "hello"+name;
 	    }
 	   /**
 	    * SpringSecurity 拦截控制
