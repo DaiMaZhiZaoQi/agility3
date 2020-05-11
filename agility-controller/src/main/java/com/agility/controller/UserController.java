@@ -126,6 +126,17 @@ public class UserController extends BaseController{
 //		   throw new Exception("测试抛异常");
 	        return "hello"+name;
 	    }
+	   
+	    @GetMapping("/admin/hello")
+	    public String admin() {
+	        return "admin";
+	    }
+
+	    @GetMapping("/user/hello")
+	    public String user() {
+	        return "user";
+	    }
+	   
 	   /**
 	    * SpringSecurity 拦截控制
 	    * @param id

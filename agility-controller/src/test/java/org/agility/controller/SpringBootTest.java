@@ -7,6 +7,7 @@ import javax.print.attribute.standard.Fidelity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.agility.App;
@@ -21,9 +22,14 @@ public class SpringBootTest {
 	@Test
 	public void testData() {
 		UserEntity userEntity = new UserEntity();
-		userEntity.setName("李四");
+		userEntity.setUsername("李四");
 		System.out.println(	mUserService.saveOrUpdate(userEntity));
 	}
+	  @Test
+	    public void contextLoads() {
+	        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	        System.out.println(encoder.encode("111111"));
+	    }
 	
 	
 }

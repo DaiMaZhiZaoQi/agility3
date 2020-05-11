@@ -27,6 +27,10 @@ public class Role extends MBaseEntity {
      * 角色名称
      */
     private String roleName;
+    
+    /**角色英文名称*/
+    private String roleEnName;
+    
 
     /**
      * 状态
@@ -49,6 +53,16 @@ public class Role extends MBaseEntity {
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+	
+	
+	public String getRoleEnName() {
+		return roleEnName;
+	}
+
+	public void setRoleEnName(String roleEnName) {
+		this.roleEnName = roleEnName;
 	}
 
 	public Integer getStatus() {

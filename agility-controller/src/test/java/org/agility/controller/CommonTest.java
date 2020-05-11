@@ -9,7 +9,10 @@ public class CommonTest {
 	  @Test
 	    public void contextLoads() {
 	        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-	        System.out.println(encoder.encode("123"));
+	        String encode = encoder.encode("111111"); 
+	        System.out.println(encode);
+	        boolean matches = encoder.matches("111111", encode);
+	        System.out.println("matches-->"+matches); 
 	    }
 	
 }

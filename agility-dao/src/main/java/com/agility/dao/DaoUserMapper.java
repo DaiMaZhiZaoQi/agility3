@@ -14,6 +14,7 @@ public interface DaoUserMapper extends BaseMapper<UserEntity>{
 	
 	int inserts(UserEntity userEntity);
 	
+	
 //	public void impFun() {
 //		MUserEntity mUserEntity = new MUserEntity();
 //		mUserEntity.setPassword("123");

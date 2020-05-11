@@ -7,8 +7,8 @@
 	<insert id="inserts" parameterType="UserEntity" useGeneratedKeys="true" keyProperty="id">
 		insert into user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="name!=null and name.length()>0">
-				name,
+			<if test="username!=null and username.length()>0">
+				username,
 			</if>
 			<if test="password!=null and password.length()>0">
 				password,
@@ -25,8 +25,8 @@
 		</trim>
 		
 		<trim prefix="values(" suffix=")" suffixOverrides=",">
-			<if test="name!=null and name.length()>0">
-				#{name},
+			<if test="username!=null and username.length()>0">
+				#{username},
 			</if>
 			<if test="password!=null and password.length()>0">
 				#{password},
@@ -42,5 +42,7 @@
 			</if>
 		</trim>
 	</insert>
+	
+	
 
 </mapper>
